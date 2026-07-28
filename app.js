@@ -14,6 +14,18 @@
   }
   window.waLink = waLink;
 
+  /**
+   * Adresin harita bağlantısı.
+   * Ayarlarda kesin bağlantı varsa o kullanılır; yoksa adres metninden
+   * harita araması üretilir. Telefonda cihazın harita uygulaması açılır.
+   */
+  function haritaLinki() {
+    if (S.haritaLinki) return S.haritaLinki;
+    if (!S.adres) return null;
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(S.adres);
+  }
+  window.haritaLinki = haritaLinki;
+
   /* ---------- Menü ve alt bilgi ---------- */
   function sayfaAdi() {
     var p = location.pathname.split('/').pop();

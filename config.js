@@ -15,7 +15,15 @@ window.SITE = {
 
   telefonGorunen: '+90 542 365 86 76',
   eposta: 'feyzaonr@gmail.com',
-  adres: 'Stüdyo adresinizi buraya yazın',
+  adres: 'Şirinyalı, İsmet Gökşen Cd. No:13, 07160 Muratpaşa/Antalya',
+
+  /**
+   * Haritada açılacak konum.
+   * Boş bırakırsanız yukarıdaki adres metniyle harita araması yapılır.
+   * Kesin konum için Google Haritalar'da işletmenizi açıp "Paylaş" ile
+   * aldığınız bağlantıyı buraya yapıştırın (örn. https://maps.app.goo.gl/xxxx).
+   */
+  haritaLinki: '',
 
   /** Ana sayfadaki kapak görseli. Dosya yoksa alan otomatik gizlenir. */
   kapakGorsel: 'medya/studyo1.jpeg',

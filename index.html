@@ -122,7 +122,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var bilgi = [];
   if (S.telefonGorunen) bilgi.push('<li><span class="k">Telefon</span><span>' + S.telefonGorunen + '</span></li>');
   if (S.eposta) bilgi.push('<li><span class="k">E-posta</span><span><a href="mailto:' + S.eposta + '">' + S.eposta + '</a></span></li>');
-  if (S.adres) bilgi.push('<li><span class="k">Adres</span><span>' + S.adres + '</span></li>');
+  if (S.adres) {
+    var harita = window.haritaLinki();
+    bilgi.push(
+      '<li><span class="k">Adres</span><span>' +
+      (harita
+        ? '<a href="' + harita + '" target="_blank" rel="noopener">' + S.adres +
+          '</a><br><span class="harita-ipucu">Haritada açmak için dokunun →</span>'
+        : S.adres) +
+      '</span></li>'
+    );
+  }
   var sosyal = window.sosyalListe();
   if (sosyal.length) {
     bilgi.push(
