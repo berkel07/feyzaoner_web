@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — Feyza Öner Pilates</title>
+<meta name="description" content="Pilates, duruş ve hareket üzerine yazılar." />
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h2>Yazılar</h2>
+    <p class="sub">Pilates, duruş ve hareket üzerine notlarımız.</p>
+    <div id="yazilar"><p class="empty">Yükleniyor...</p></div>
+  </div>
+</section>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  window.yazilariGetir().then(function (liste) {
+    var el = document.getElementById('yazilar');
+    if (!liste.length) {
+      el.innerHTML = '<p class="empty">Henüz yazı yok. Yakında burada olacağız.</p>';
+      return;
+    }
+    el.innerHTML = liste.map(window.yaziKarti).join('');
+  });
+});
+</script>
+</body>
+</html>

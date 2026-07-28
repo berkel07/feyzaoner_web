@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stüdyo — Feyza Öner Pilates</title>
+<meta name="description" content="Stüdyomuzdan fotoğraflar ve ders videoları." />
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Stüdyo</p>
+    <h2>Fotoğraflar ve videolar</h2>
+    <p class="sub">Stüdyomuzdan kareler ve ders anlarından kısa videolar.</p>
+    <div id="galeri"><p class="empty">Yükleniyor...</p></div>
+  </div>
+</section>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementById('galeri');
+  var ogeler = (window.SITE && window.SITE.galeri) || [];
+
+  if (!ogeler.length) {
+    el.innerHTML = '<p class="empty">Yakında stüdyomuzdan görseller burada olacak.</p>';
+    return;
+  }
+
+  el.className = 'medya-grid';
+  el.innerHTML = ogeler.map(function (o) {
+    var alt = (o.baslik || 'Stüdyo görseli').replace(/"/g, '&quot;');
+    // Dosyası bulunmayan görsel sessizce gizlenir (yükleme henüz yapılmadıysa).
+    var gizle = ' onerror="this.closest(\'figure\').remove()"';
+
+    if (o.tur === 'video') {
+      // Yerel video dosyası
+      return (
+        '<figure class="medya">' +
+        '<video controls preload="metadata" playsinline src="' + o.kaynak + '"' +
+        (o.kapak ? ' poster="' + o.kapak + '"' : '') + '></video>' +
+        (o.baslik ? '<figcaption>' + o.baslik + '</figcaption>' : '') +
+        '</figure>'
+      );
+    }
+
+    if (o.tur === 'youtube') {
+      return (
+        '<figure class="medya medya-genis">' +
+        '<div class="oran-16-9"><iframe src="https://www.youtube-nocookie.com/embed/' + o.kaynak +
+        '" title="' + alt + '" loading="lazy" allowfullscreen ' +
+        'allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>' +
+        (o.baslik ? '<figcaption>' + o.baslik + '</figcaption>' : '') +
+        '</figure>'
+      );
+    }
+
+    return (
+      '<figure class="medya">' +
+      '<img src="' + o.kaynak + '" alt="' + alt + '" loading="lazy"' + gizle + '>' +
+      (o.baslik ? '<figcaption>' + o.baslik + '</figcaption>' : '') +
+      '</figure>'
+    );
+  }).join('');
+
+  // Hiçbir görsel yüklenemediyse bilgilendirici mesaj göster.
+  setTimeout(function () {
+    if (el.querySelectorAll('figure').length === 0) {
+      el.className = '';
+      el.innerHTML = '<p class="empty">Yakında stüdyomuzdan görseller burada olacak.</p>';
+    }
+  }, 1200);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pilates Haberleri — Feyza Öner Pilates</title>
+<meta name="description" content="Pilates, egzersiz ve duruş sağlığı hakkında güncel haberler." />
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Güncel</p>
+    <h2>Pilates Haberleri</h2>
+    <p class="sub">
+      Pilates, egzersiz ve duruş sağlığı üzerine güncel haberler her gün otomatik
+      olarak derlenir. Başlığa dokunduğunuzda haberin kaynağına gidersiniz.
+    </p>
+    <div id="haberler"><p class="empty">Yükleniyor...</p></div>
+    <p id="guncelleme" class="empty" style="padding-top:24px"></p>
+  </div>
+</section>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementById('haberler');
+
+  fetch('haberler.json?v=' + Date.now())
+    .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+    .then(function (veri) {
+      var liste = (veri && veri.haberler) || [];
+      if (!liste.length) {
+        el.innerHTML = '<p class="empty">Şu anda gösterilecek haber yok. Yarın tekrar bakın.</p>';
+        return;
+      }
+      el.innerHTML = liste.map(function (h) {
+        var tarih = h.tarih ? new Date(h.tarih).toLocaleDateString('tr-TR', {
+          day: 'numeric', month: 'long', year: 'numeric'
+        }) : '';
+        return (
+          '<a class="post" href="' + h.link + '" target="_blank" rel="noopener">' +
+          '<div class="date">' + tarih + '</div>' +
+          '<h3>' + h.baslik + '</h3>' +
+          '<p>' + (h.ozet || '') + (h.kaynak ? ' <span class="kaynak">· ' + h.kaynak + '</span>' : '') + '</p>' +
+          '</a>'
+        );
+      }).join('');
+
+      if (veri.guncelleme) {
+        document.getElementById('guncelleme').textContent =
+          'Son güncelleme: ' + new Date(veri.guncelleme).toLocaleString('tr-TR', {
+            day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit'
+          });
+      }
+    })
+    .catch(function () {
+      el.innerHTML = '<p class="empty">Haberler şu anda yüklenemedi. Lütfen daha sonra tekrar deneyin.</p>';
+    });
+});
+</script>
+</body>
+</html>

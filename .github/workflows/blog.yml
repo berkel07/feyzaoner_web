@@ -1,0 +1,40 @@
+# Otomatik blog yayınlama
+#
+# Bu dosyayı web sitesi deponuzda şu yola koyun:
+#   .github/workflows/blog.yml
+#
+# yazilar/ klasörüne bir .md dosyası eklediğinizde çalışır,
+# yazilar.json dizinini günceller ve siteyi yayına alır.
+name: Blog dizinini guncelle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'yazilar/**'
+      - 'blog-index.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dizin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dizini uret
+        run: node blog-index.js
+
+      - name: Degisikligi kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add yazilar.json
+          if git diff --staged --quiet; then
+            echo "Degisiklik yok."
+          else
+            git commit -m "Blog dizini guncellendi"
+            git push
+          fi

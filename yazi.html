@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yazı — Feyza Öner Pilates</title>
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<div class="wrap narrow">
+  <article class="post-body" id="icerik">
+    <p class="empty">Yükleniyor...</p>
+  </article>
+  <p style="padding-bottom:40px"><a href="blog.html">← Tüm yazılar</a></p>
+</div>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var el = document.getElementById('icerik');
+  var dosya = new URLSearchParams(location.search).get('y');
+
+  if (!dosya || /[^a-zA-Z0-9._-]/.test(dosya)) {
+    el.innerHTML = '<p class="empty">Yazı bulunamadı.</p>';
+    return;
+  }
+
+  window.yazilariGetir().then(function (liste) {
+    var bilgi = liste.filter(function (y) { return y.dosya === dosya; })[0];
+
+    fetch('yazilar/' + dosya + '?v=' + Date.now())
+      .then(function (r) {
+        if (!r.ok) throw new Error('bulunamadı');
+        return r.text();
+      })
+      .then(function (metin) {
+        // Ön bilgi (--- ... ---) bloğunu ve baştaki H1'i ayır:
+        // başlık sayfanın üstünde ayrıca gösteriliyor, iki kez çıkmasın.
+        var govde = metin
+          .replace(/^---[\s\S]*?---\s*/, '')
+          .replace(/^\s*#\s+.*(\r?\n)+/, '');
+        var baslik = (bilgi && bilgi.baslik) || 'Yazı';
+        document.title = baslik + ' — ' + (window.SITE.studyoAdi || '');
+        el.innerHTML =
+          '<h1>' + baslik + '</h1>' +
+          '<div class="meta">' + window.tarihYaz(bilgi && bilgi.tarih) + '</div>' +
+          window.markdownToHtml(govde);
+      })
+      .catch(function () {
+        el.innerHTML = '<p class="empty">Yazı bulunamadı.</p>';
+      });
+  });
+});
+</script>
+</body>
+</html>

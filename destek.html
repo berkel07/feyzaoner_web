@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Destek — Feyza Öner Pilates</title>
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<div class="wrap narrow">
+  <article class="post-body">
+    <h1>Destek</h1>
+    <div class="meta">Uygulama ve stüdyo hizmetleri için yardım</div>
+
+    <h2>İletişim</h2>
+    <p>
+      Uygulamayla ilgili soru, öneri veya sorunlarınız için bize e-posta ile
+      ulaşabilirsiniz. Genellikle 1–2 iş günü içinde yanıt veriyoruz.
+    </p>
+    <p><strong>E-posta:</strong> <a id="epostaBag" href="#"></a></p>
+    <p><a class="btn btn-wa" data-wa="Merhaba, uygulama hakkında destek almak istiyorum.">WhatsApp'tan Yazın</a></p>
+
+    <h2>Uygulama hakkında</h2>
+    <p>
+      Feyza Öner Pilates uygulaması, stüdyo ekibinin randevuları, müşterileri ve
+      seans paketlerini yönetmesi için tasarlanmış bir işletme uygulamasıdır.
+      Ekip üyeleri aynı takvimi gerçek zamanlı olarak paylaşır.
+    </p>
+    <ul>
+      <li>Eğitmen sütunlu günlük, haftalık ve aylık takvim</li>
+      <li>Randevu oluşturma, düzenleme, iptal ve durum takibi</li>
+      <li>Müşteri kayıtları ve katılım geçmişi</li>
+      <li>Seans paketleri ve otomatik seans düşümü</li>
+      <li>Ekip üyeleri arasında anlık senkronizasyon ve bildirimler</li>
+    </ul>
+
+    <h2>Sık sorulanlar</h2>
+    <h3>Uygulamayı kimler kullanabilir?</h3>
+    <p>
+      Uygulama stüdyo ekibi içindir. Bir stüdyoya katılmak için stüdyo
+      yöneticisinden alınan davet kodu gerekir.
+    </p>
+    <h3>Şifremi unuttum</h3>
+    <p>
+      Giriş ekranındaki “Şifremi unuttum” bağlantısıyla e-posta adresinize
+      sıfırlama bağlantısı gönderebilirsiniz.
+    </p>
+    <h3>Hesabımı nasıl sildirebilirim?</h3>
+    <p>
+      Yukarıdaki e-posta adresine talebinizi ilettiğinizde hesabınız ve ilişkili
+      verileriniz silinir.
+    </p>
+
+    <p><a href="gizlilik.html">Gizlilik Politikası →</a></p>
+  </article>
+</div>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var e = window.SITE.eposta || '';
+  var a = document.getElementById('epostaBag');
+  a.href = 'mailto:' + e;
+  a.textContent = e;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feyza Öner Pilates — Reformer ve Mat Pilates Stüdyosu</title>
+<meta name="description" content="Reformer ve mat pilates dersleri, kişiye özel programlar. Deneme dersi için WhatsApp'tan yazın." />
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-metin">
+      <p class="eyebrow">Reformer &amp; Mat Pilates Stüdyosu</p>
+      <h1 data-site="studyoAdi">Feyza Öner Pilates</h1>
+      <p data-site="aciklama"></p>
+      <div class="btn-row">
+        <a class="btn btn-wa" data-wa="Merhaba, deneme dersi için bilgi almak istiyorum.">Deneme Dersi İçin Yazın</a>
+        <a class="link-arrow" href="#dersler">Dersleri inceleyin →</a>
+      </div>
+    </div>
+    <div class="hero-gorsel" id="heroGorsel"></div>
+  </div>
+</div>
+
+<section id="dersler">
+  <div class="wrap">
+    <p class="eyebrow">Dersler</p>
+    <h2>Size uygun olanı birlikte seçelim</h2>
+    <p class="sub">Her ders seviyenize, geçmiş sakatlıklarınıza ve hedefinize göre programlanır.</p>
+    <div class="grid" id="dersListesi"></div>
+  </div>
+</section>
+
+<section id="hakkimizda" class="alt">
+  <div class="wrap narrow">
+    <p class="eyebrow">Hakkımızda</p>
+    <h2>Zorlamak değil, doğru hareketi öğretmek</h2>
+    <p style="margin-top:24px">
+      Küçük gruplar ve birebir derslerle çalışıyoruz; böylece herkesin duruşuna ve
+      hedefine göre program hazırlayabiliyoruz. Odağımız üç şey: nefes, hizalanma
+      ve kontrol.
+    </p>
+    <p>
+      İlk adım için bir deneme dersi yeterli — birlikte size uygun olup olmadığına
+      bakalım.
+    </p>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h2>Yazılar</h2>
+    <p class="sub">Pilates, duruş ve hareket üzerine notlarımız.</p>
+    <div id="sonYazilar"></div>
+    <p style="margin-top:32px">
+      <a class="link-arrow" href="blog.html">Tüm yazılar →</a>
+      <a class="link-arrow" href="haberler.html" style="margin-left:24px">Pilates haberleri →</a>
+    </p>
+  </div>
+</section>
+
+<section id="iletisim" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">İletişim</p>
+    <h2>Bize ulaşın</h2>
+    <p class="sub">Ders saatleri ve fiyatlar için WhatsApp'tan yazmanız yeterli.</p>
+    <div class="cols">
+      <div>
+        <ul class="info-list" id="iletisimBilgi"></ul>
+        <a class="btn btn-wa" data-wa="Merhaba, ders saatleri hakkında bilgi almak istiyorum.">WhatsApp'tan Yazın</a>
+      </div>
+      <div>
+        <ul class="info-list" id="saatler"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var S = window.SITE;
+
+  // Kapak görseli — dosya yoksa alan sessizce kaldırılır.
+  if (S.kapakGorsel) {
+    var img = new Image();
+    img.src = S.kapakGorsel;
+    img.alt = S.studyoAdi || '';
+    img.onload = function () { document.getElementById('heroGorsel').appendChild(img); };
+    img.onerror = function () {
+      var el = document.getElementById('heroGorsel');
+      if (el) el.remove();
+    };
+  } else {
+    var bos = document.getElementById('heroGorsel');
+    if (bos) bos.remove();
+  }
+
+  document.getElementById('dersListesi').innerHTML = (S.dersler || [])
+    .map(function (d) {
+      return '<div class="card"><h3>' + d.ad + '</h3><p>' + d.metin + '</p></div>';
+    })
+    .join('');
+
+  document.getElementById('saatler').innerHTML = (S.calismaSaatleri || [])
+    .map(function (s) {
+      return '<li><span class="k">' + s.gun + '</span><span>' + s.saat + '</span></li>';
+    })
+    .join('');
+
+  var bilgi = [];
+  if (S.telefonGorunen) bilgi.push('<li><span class="k">Telefon</span><span>' + S.telefonGorunen + '</span></li>');
+  if (S.eposta) bilgi.push('<li><span class="k">E-posta</span><span><a href="mailto:' + S.eposta + '">' + S.eposta + '</a></span></li>');
+  if (S.adres) bilgi.push('<li><span class="k">Adres</span><span>' + S.adres + '</span></li>');
+  var sosyal = window.sosyalListe();
+  if (sosyal.length) {
+    bilgi.push(
+      '<li><span class="k">Sosyal</span><span>' +
+      sosyal.map(function (o) {
+        return '<a href="' + o.href + '" target="_blank" rel="noopener">' + o.ad + '</a>';
+      }).join(' · ') +
+      '</span></li>'
+    );
+  }
+  document.getElementById('iletisimBilgi').innerHTML = bilgi.join('');
+
+  window.yazilariGetir().then(function (liste) {
+    var el = document.getElementById('sonYazilar');
+    if (!liste.length) {
+      el.innerHTML = '<p class="empty">Yakında ilk yazımız burada olacak.</p>';
+      return;
+    }
+    el.innerHTML = liste.slice(0, 3).map(window.yaziKarti).join('');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gizlilik Politikası — Feyza Öner Pilates</title>
+<link rel="icon" type="image/png" href="medya/favicon.png" />
+<link rel="apple-touch-icon" href="medya/favicon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav"><div class="nav-inner" data-nav></div></header>
+
+<div class="wrap narrow">
+  <article class="post-body">
+    <h1>Gizlilik Politikası</h1>
+    <div class="meta">Son güncelleme: 26 Temmuz 2026</div>
+
+    <p>
+      Feyza Öner Pilates (“uygulama”), bir Pilates stüdyosunun randevu ve müşteri
+      yönetimi için kullanılan işletme içi bir uygulamadır. Bu politika, uygulamanın
+      hangi verileri işlediğini açıklar.
+    </p>
+
+    <h2>Toplanan veriler</h2>
+    <ul>
+      <li><strong>Hesap bilgileri:</strong> ad soyad, e-posta adresi — kimlik doğrulama için.</li>
+      <li><strong>Stüdyo işletme verileri:</strong> ekip tarafından girilen müşteri adı,
+        telefon, e-posta, randevu kayıtları, seans paketleri ve ders notları.</li>
+      <li><strong>Cihaz bildirim kimliği:</strong> bildirim gönderebilmek için push token'ı.</li>
+    </ul>
+    <p>
+      Uygulama konum, kişiler, fotoğraf veya reklam kimliği gibi verilere erişmez;
+      kullanıcı takibi ve reklam yapmaz.
+    </p>
+
+    <h2>Verilerin kullanımı</h2>
+    <p>
+      Veriler yalnızca uygulamanın işlevini sağlamak için kullanılır: randevu planlama,
+      müşteri kayıtlarının tutulması, paket takibi ve ekip üyelerine bildirim gönderme.
+      Veriler üçüncü taraflara satılmaz veya pazarlama amacıyla paylaşılmaz.
+    </p>
+
+    <h2>Saklama ve güvenlik</h2>
+    <p>
+      Veriler Supabase (PostgreSQL) altyapısında saklanır ve aktarım sırasında TLS ile
+      şifrelenir. Satır düzeyi güvenlik kuralları sayesinde her kullanıcı yalnızca üyesi
+      olduğu stüdyonun verilerine erişebilir.
+    </p>
+
+    <h2>Haklarınız</h2>
+    <p>
+      Hesabınızın ve verilerinizin silinmesini, düzeltilmesini veya bir kopyasını talep
+      edebilirsiniz. Talebinizi <a id="epostaBag" href="#"></a> adresine iletmeniz
+      yeterlidir; talepler en geç 30 gün içinde karşılanır.
+    </p>
+
+    <h2>Çocukların gizliliği</h2>
+    <p>
+      Uygulama işletme kullanımına yöneliktir ve 13 yaş altındaki kişilerden bilerek
+      veri toplamaz.
+    </p>
+
+    <h2>Değişiklikler</h2>
+    <p>Bu politika güncellenirse yukarıdaki tarih değiştirilir.</p>
+
+    <p><a href="destek.html">Destek sayfası →</a></p>
+  </article>
+</div>
+
+<footer class="site" data-footer></footer>
+<a class="wa-float" data-wa-float href="#"></a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var e = window.SITE.eposta || '';
+  var a = document.getElementById('epostaBag');
+  a.href = 'mailto:' + e;
+  a.textContent = e;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Pilates haberlerini otomatik güncelle
+#
+# Bu dosyayı web sitesi deponuzda şu yola koyun:
+#   .github/workflows/haberler.yml
+#
+# Her gün 06:00 (TR saatiyle 09:00) haber kaynaklarını tarar,
+# haberler.json dosyasını günceller ve siteyi yeniler.
+name: Haberleri guncelle
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  haberler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Haberleri topla
+        run: node haberler-cek.js
+
+      - name: Degisikligi kaydet
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add haberler.json
+          if git diff --staged --quiet; then
+            echo "Yeni haber yok."
+          else
+            git commit -m "Haberler guncellendi"
+            git push
+          fi
