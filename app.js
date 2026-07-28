@@ -35,7 +35,14 @@
   /** Doldurulmuş sosyal medya hesapları. */
   function sosyalListe() {
     var s = (S.sosyal || {});
-    var adlar = { instagram: 'Instagram', youtube: 'YouTube', tiktok: 'TikTok', facebook: 'Facebook' };
+    // Sıra, sitede görünme sırasını belirler.
+    var adlar = {
+      instagram: 'Instagram',
+      facebook: 'Facebook',
+      google: 'Google',
+      youtube: 'YouTube',
+      tiktok: 'TikTok',
+    };
     return Object.keys(adlar)
       .filter(function (k) { return s[k]; })
       .map(function (k) { return { ad: adlar[k], href: s[k] }; });

@@ -34,9 +34,15 @@ window.SITE = {
    */
   sosyal: {
     instagram: 'https://instagram.com/feyzaonr',
+    facebook: 'https://facebook.com/feyzaonr',
+    /**
+     * Google işletme kaydınız. Şimdilik adres araması kullanılıyor.
+     * Kesin bağlantı için Google Haritalar'da işletmenizi açın →
+     * "Paylaş" → aldığınız adresi (https://maps.app.goo.gl/...) buraya yazın.
+     */
+    google: 'https://www.google.com/maps/search/?api=1&query=Feyza%20%C3%96ner%20Pilates%20%C5%9Eirinyal%C4%B1%20%C4%B0smet%20G%C3%B6k%C5%9Fen%20Cd.%20No%3A13%20Muratpa%C5%9Fa%20Antalya',
     youtube: '',   // örn. 'https://youtube.com/@feyzaonerpilates'
     tiktok: '',
-    facebook: '',
   },
 
   calismaSaatleri: [
@@ -65,6 +71,14 @@ window.SITE = {
     {
       ad: 'Hamile Pilatesi',
       metin: 'Gebelik döneminde güvenli, uzman eşliğinde nefes ve güçlendirme çalışmaları.',
+    },
+    {
+      ad: 'EMS Antrenman',
+      metin: 'Elektro kas uyarımıyla 20 dakikada yoğun çalışma; zamanı kısıtlı olanlar için birebir seans.',
+    },
+    {
+      ad: 'Fonksiyonel Antrenman',
+      metin: 'Günlük hayattaki hareketleri güçlendiren, tüm vücudu çalıştıran dinamik seanslar.',
     },
   ],
 
