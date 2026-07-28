@@ -85,6 +85,24 @@ function tarihIso(ham) {
   return isNaN(t.getTime()) ? '' : t.toISOString();
 }
 
+/**
+ * Google News özetleri çoğu zaman başlığın ve kaynak adının tekrarıdır.
+ * Böyle durumlarda özeti hiç göstermemek daha temiz olur.
+ */
+function ozetAnlamli(ozet, baslik) {
+  const sadeles = function (s) {
+    return String(s || '')
+      .toLocaleLowerCase('tr')
+      .replace(/[^\p{L}\p{N}]+/gu, ' ')
+      .trim();
+  };
+  const o = sadeles(ozet);
+  const b = sadeles(baslik);
+  if (!o || !b) return false;
+  if (o.indexOf(b) !== -1 || b.indexOf(o) !== -1) return false;
+  return o.length > 40;
+}
+
 /** RSS veya Atom içeriğini haber listesine çevirir. */
 function ayristir(xml, kaynakAdi) {
   const bloklar = xml.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/gi) || [];
@@ -94,6 +112,7 @@ function ayristir(xml, kaynakAdi) {
       const ozetHam = ilkEslesme(blok, ['description', 'summary', 'content']);
       let ozet = etiketTemizle(ozetHam);
       if (ozet.length > 180) ozet = ozet.slice(0, 177).trimEnd() + '...';
+      if (!ozetAnlamli(ozet, baslik)) ozet = '';
       return {
         baslik,
         kaynak,
@@ -107,7 +126,7 @@ function ayristir(xml, kaynakAdi) {
     });
 }
 
-module.exports = { ayristir, etiketTemizle, baslikVeKaynak };
+module.exports = { ayristir, etiketTemizle, baslikVeKaynak, ozetAnlamli };
 
 /* ---------- Ana akış ---------- */
 

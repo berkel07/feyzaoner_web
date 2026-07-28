@@ -295,13 +295,21 @@
                 day: 'numeric', month: 'long', year: 'numeric',
               })
             : '';
+          // Özet yoksa kaynak adı tek başına yazılır (baştaki "·" görünmesin).
+          var alt = '';
+          if (h.ozet && h.kaynak) {
+            alt = h.ozet + ' <span class="kaynak">· ' + h.kaynak + '</span>';
+          } else if (h.ozet) {
+            alt = h.ozet;
+          } else if (h.kaynak) {
+            alt = '<span class="kaynak">' + h.kaynak + '</span>';
+          }
           return (
             '<a class="post" href="' + h.link + '" target="_blank" rel="noopener">' +
             '<div class="date">' + tarih + '</div>' +
             '<h3>' + h.baslik + '</h3>' +
-            '<p>' + (h.ozet || '') +
-            (h.kaynak ? ' <span class="kaynak">· ' + h.kaynak + '</span>' : '') +
-            '</p></a>'
+            (alt ? '<p>' + alt + '</p>' : '') +
+            '</a>'
           );
         }).join('');
 
