@@ -11,7 +11,7 @@ window.SITE = {
 
   // WhatsApp numarası — ülke kodu ile, boşluksuz ve + işaretsiz.
   whatsapp: '905423658676',
-  whatsappMesaj: 'Merhaba, pilates dersleri hakkında bilgi almak istiyorum.',
+  whatsappMesaj: 'Merhaba, randevu almak istiyorum.',
 
   telefonGorunen: '+90 542 365 86 76',
   eposta: 'feyzaonr@gmail.com',
