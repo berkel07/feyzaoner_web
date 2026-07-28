@@ -36,4 +36,5 @@ Yalnızca kendi vücut ağırlığınızla, mat üzerinde çalışırsınız.
 | Grup enerjisi seviyorum | Mat grup dersi |
 
 Çoğu üyemiz ikisini birlikte kullanıyor: haftada bir reformer, bir mat. Emin
-değilseniz bir deneme dersi alın; hangisinin size iyi geldiğini bedeniniz söyler.
+değilseniz ilk dersinizde birlikte karar verelim; hangisinin size iyi geldiğini
+bedeniniz söyler.

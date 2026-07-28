@@ -66,10 +66,6 @@ window.SITE = {
       ad: 'Hamile Pilatesi',
       metin: 'Gebelik döneminde güvenli, uzman eşliğinde nefes ve güçlendirme çalışmaları.',
     },
-    {
-      ad: 'Deneme Dersi',
-      metin: 'İlk kez pilates yapacaklar için tanışma dersi — size uygun mu birlikte görelim.',
-    },
   ],
 
   /**

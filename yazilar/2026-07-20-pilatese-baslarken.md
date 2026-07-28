@@ -40,4 +40,4 @@ Klasik cevap şudur: **10 derste hissedersiniz, 20 derste görürsünüz, 30 der
 başkaları fark eder.** Özellikle bel ve boyun ağrılarında rahatlama genellikle
 ilk birkaç haftada başlar.
 
-Sorularınız için bize WhatsApp'tan yazabilir, bir deneme dersiyle başlayabilirsiniz.
+Sorularınız için bize WhatsApp'tan yazabilir, hemen randevu alabilirsiniz.
