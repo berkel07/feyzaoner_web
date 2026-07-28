@@ -18,7 +18,7 @@ window.SITE = {
   adres: 'Stüdyo adresinizi buraya yazın',
 
   /** Ana sayfadaki kapak görseli. Dosya yoksa alan otomatik gizlenir. */
-  kapakGorsel: 'medya/studyo-1.jpg',
+  kapakGorsel: 'medya/studyo1.jpeg',
 
   /**
    * Sosyal medya — doldurduklarınız menüde, iletişimde ve alt bilgide görünür.
@@ -68,17 +68,18 @@ window.SITE = {
    * GALERİ — fotoğraf ve videolar.
    * Dosyaları `medya/` klasörüne yükleyip buraya bir satır ekleyin.
    *
-   *   { tur: 'foto',    kaynak: 'medya/studyo-1.jpg',  baslik: 'Reformer odası' }
+   *   { tur: 'foto',    kaynak: 'medya/studyo1.jpeg', baslik: 'Reformer odası' }
    *   { tur: 'video',   kaynak: 'medya/ders.mp4',      baslik: 'Ders anı', kapak: 'medya/kapak.jpg' }
    *   { tur: 'youtube', kaynak: 'VIDEO_KIMLIGI',       baslik: 'Tanıtım videosu' }
    *
    * YouTube kimliği: youtube.com/watch?v=ABC123 adresindeki "ABC123" kısmı.
    */
   galeri: [
-    { tur: 'foto', kaynak: 'medya/studyo-1.jpg', baslik: 'Reformer alanı' },
-    { tur: 'foto', kaynak: 'medya/studyo-2.jpg', baslik: 'Cadillac çalışması' },
-    { tur: 'foto', kaynak: 'medya/studyo-3.jpg', baslik: 'Ters sarkma — omurga boşaltma' },
-    { tur: 'foto', kaynak: 'medya/studyo-4.jpg', baslik: 'Ladder barrel ile esneme' },
-    { tur: 'foto', kaynak: 'medya/studyo-5.jpg', baslik: 'Reformer üzerinde uzama' },
+    { tur: 'foto', kaynak: 'medya/studyo1.jpeg', baslik: 'Reformer alanı' },
+    { tur: 'foto', kaynak: 'medya/studyo2.jpeg', baslik: 'Cadillac çalışması' },
+    { tur: 'foto', kaynak: 'medya/studyo3.jpeg', baslik: 'Ters sarkma — omurga boşaltma' },
+    { tur: 'foto', kaynak: 'medya/studyo4.jpeg', baslik: 'Ladder barrel ile yan esneme' },
+    { tur: 'foto', kaynak: 'medya/studyo5.jpeg', baslik: 'Reformer üzerinde uzama' },
+    { tur: 'foto', kaynak: 'medya/studyo6.jpeg', baslik: 'Cadillac — bacak serisi' },
   ],
 };

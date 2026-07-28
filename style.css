@@ -216,7 +216,11 @@ footer.site a:hover { color: var(--ink); }
   gap: 28px 24px;
 }
 .medya { margin: 0; }
-.medya img, .medya video { width: 100%; display: block; background: var(--paper-alt); }
+/* Tüm görseller aynı oranda kırpılır; ızgara hizalı ve düzenli görünür. */
+.medya img, .medya video {
+  width: 100%; display: block; background: var(--paper-alt);
+  aspect-ratio: 4 / 5; object-fit: cover; object-position: center;
+}
 .medya-genis { grid-column: 1 / -1; max-width: 720px; }
 .oran-16-9 { position: relative; padding-top: 56.25%; background: var(--paper-alt); }
 .oran-16-9 iframe {
