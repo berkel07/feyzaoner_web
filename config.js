@@ -40,8 +40,8 @@ window.SITE = {
   },
 
   calismaSaatleri: [
-    { gun: 'Pazartesi – Cuma', saat: '08:00 – 21:00' },
-    { gun: 'Cumartesi', saat: '09:00 – 17:00' },
+    { gun: 'Pazartesi – Cuma', saat: '07:00 – 22:00' },
+    { gun: 'Cumartesi', saat: '09:00 – 16:00' },
     { gun: 'Pazar', saat: 'Kapalı' },
   ],
 

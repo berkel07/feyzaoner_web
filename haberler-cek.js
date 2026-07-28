@@ -116,8 +116,10 @@ async function main() {
 
   for (const kaynak of KAYNAKLAR) {
     try {
+      // Başlık değerleri yalnızca ASCII olabilir; Türkçe harf konursa
+      // fetch "Cannot convert argument to a ByteString" hatası verir.
       const yanit = await fetch(kaynak.url, {
-        headers: { 'user-agent': 'FeyzaOnerPilatesSite/1.0 (+haber toplayıcı)' },
+        headers: { 'user-agent': 'FeyzaOnerPilatesSite/1.0 (+news reader)' },
       });
       if (!yanit.ok) {
         console.warn(kaynak.ad + ': HTTP ' + yanit.status);

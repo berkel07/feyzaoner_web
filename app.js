@@ -50,8 +50,7 @@
       { ad: 'Ana Sayfa', href: 'index.html' },
       { ad: 'Dersler', href: 'index.html#dersler' },
       { ad: 'Stüdyo', href: 'galeri.html' },
-      { ad: 'Blog', href: 'blog.html' },
-      { ad: 'Haberler', href: 'haberler.html' },
+      { ad: 'Blog & Haberler', href: 'blog.html' },
       { ad: 'İletişim', href: 'index.html#iletisim' },
     ];
     var ad = S.studyoAdi || 'Pilates';
@@ -82,7 +81,7 @@
       '<nav>' +
       '<a href="index.html">Ana Sayfa</a>' +
       '<a href="blog.html">Blog</a>' +
-      '<a href="haberler.html">Haberler</a>' +
+      '<a href="blog.html#haberler">Haberler</a>' +
       '<a href="destek.html">Destek</a>' +
       '<a href="gizlilik.html">Gizlilik</a>' +
       sosyalListe()
@@ -273,6 +272,49 @@
       (y.ozet ? '<p>' + y.ozet + '</p>' : '') +
       '</a>'
     );
+  };
+
+  /* ---------- Haberler ---------- */
+  /**
+   * haberler.json'u okuyup verilen kaba çizer.
+   * `zamanEl` verilirse son güncelleme zamanı oraya yazılır.
+   */
+  window.haberleriGetir = function (el, zamanEl) {
+    if (!el) return Promise.resolve();
+    return fetch('haberler.json?v=' + Date.now())
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (veri) {
+        var liste = (veri && veri.haberler) || [];
+        if (!liste.length) {
+          el.innerHTML = '<p class="empty">Şu anda gösterilecek haber yok. Yarın tekrar bakın.</p>';
+          return;
+        }
+        el.innerHTML = liste.map(function (h) {
+          var tarih = h.tarih
+            ? new Date(h.tarih).toLocaleDateString('tr-TR', {
+                day: 'numeric', month: 'long', year: 'numeric',
+              })
+            : '';
+          return (
+            '<a class="post" href="' + h.link + '" target="_blank" rel="noopener">' +
+            '<div class="date">' + tarih + '</div>' +
+            '<h3>' + h.baslik + '</h3>' +
+            '<p>' + (h.ozet || '') +
+            (h.kaynak ? ' <span class="kaynak">· ' + h.kaynak + '</span>' : '') +
+            '</p></a>'
+          );
+        }).join('');
+
+        if (zamanEl && veri.guncelleme) {
+          zamanEl.textContent =
+            'Son güncelleme: ' + new Date(veri.guncelleme).toLocaleString('tr-TR', {
+              day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit',
+            });
+        }
+      })
+      .catch(function () {
+        el.innerHTML = '<p class="empty">Haberler şu anda yüklenemedi. Lütfen daha sonra tekrar deneyin.</p>';
+      });
   };
 
   /* ---------- Başlat ---------- */

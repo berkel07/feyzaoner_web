@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blog — Feyza Öner Pilates</title>
-<meta name="description" content="Pilates, duruş ve hareket üzerine yazılar." />
+<meta name="description" content="Pilates, duruş ve hareket üzerine yazılarımız ve güncel pilates haberleri." />
 <link rel="icon" type="image/png" href="medya/favicon.png" />
 <link rel="apple-touch-icon" href="medya/favicon.png" />
 <link rel="stylesheet" href="style.css" />
@@ -13,12 +13,25 @@
 
 <header class="nav"><div class="nav-inner" data-nav></div></header>
 
-<section style="border-bottom:none">
+<section>
   <div class="wrap">
     <p class="eyebrow">Blog</p>
-    <h2>Yazılar</h2>
-    <p class="sub">Pilates, duruş ve hareket üzerine notlarımız.</p>
+    <h2>Yazılarımız</h2>
+    <p class="sub">Pilates, duruş ve hareket üzerine stüdyodan notlar.</p>
     <div id="yazilar"><p class="empty">Yükleniyor...</p></div>
+  </div>
+</section>
+
+<section id="haberler" class="alt" style="border-bottom:none">
+  <div class="wrap">
+    <p class="eyebrow">Güncel</p>
+    <h2>Pilates Haberleri</h2>
+    <p class="sub">
+      Pilates, egzersiz ve duruş sağlığı üzerine güncel haberler her gün otomatik
+      olarak derlenir. Başlığa dokunduğunuzda haberin kaynağına gidersiniz.
+    </p>
+    <div id="haberListesi"><p class="empty">Yükleniyor...</p></div>
+    <p id="guncelleme" class="empty" style="padding-top:24px"></p>
   </div>
 </section>
 
@@ -37,6 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     el.innerHTML = liste.map(window.yaziKarti).join('');
   });
+
+  window.haberleriGetir(
+    document.getElementById('haberListesi'),
+    document.getElementById('guncelleme')
+  );
 });
 </script>
 </body>

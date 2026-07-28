@@ -111,7 +111,7 @@ async function main() {
     k('Logo işareti ve yazısı yüklendi',
       (await s.locator('.brand-isaret').evaluate((e) => e.naturalWidth)) > 0 &&
       (await s.locator('.brand-yazi').evaluate((e) => e.naturalWidth)) > 0);
-    k('Menü 6 bağlantı', (await s.locator('.nav-links a').count()) === 6);
+    k('Menü 5 bağlantı', (await s.locator('.nav-links a').count()) === 5);
     k('Ders listesi dolu', (await s.locator('#dersListesi .card').count()) >= 5);
     k('Çalışma saatleri', (await s.locator('#saatler li').count()) === 3);
     k('WhatsApp numarası doğru',
@@ -144,6 +144,14 @@ async function main() {
     k('Gizlilik e-postası doğru',
       (await s.locator('#epostaBag').getAttribute('href')) === 'mailto:' + eposta);
 
+    // GitHub Pages'te Jekyll, .md dosyalarini .html'e cevirir ve yazi
+    // sayfasi yaziyi bulamaz. .nojekyll bunu kapatir.
+    k('.nojekyll dosyasi var (Jekyll kapali)', fs.existsSync('.nojekyll'));
+    k('Haber toplayicinin baslik degerleri ASCII',
+      !/[^\x00-\x7F]/.test(
+        (fs.readFileSync('haberler-cek.js', 'utf8').match(/'user-agent':\s*'([^']*)'/) || ['', ''])[1]
+      ));
+
     k('Sayfa JS hatası yok', jsHatalari.length === 0);
     await s.close();
   }
@@ -167,12 +175,23 @@ async function main() {
     k('Galeri taşmıyor',
       await s.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
 
-    await s.goto(B + 'haberler.html', { waitUntil: 'networkidle' });
-    k('Haberler listelendi', (await s.locator('#haberler a.post').count()) === 2);
+    // Haberler artık blog sayfasının ikinci bölümü
+    await s.goto(B + 'blog.html', { waitUntil: 'networkidle' });
+    await s.waitForTimeout(400);
+    k('Blog sayfasında yazılar var', (await s.locator('#yazilar a.post').count()) >= 2);
+    k('Blog sayfasında haberler listelendi',
+      (await s.locator('#haberListesi a.post').count()) === 2);
     k('Haber dış bağlantı ve yeni sekme',
-      (await s.locator('#haberler a.post').first().getAttribute('target')) === '_blank');
+      (await s.locator('#haberListesi a.post').first().getAttribute('target')) === '_blank');
     k('Güncelleme zamanı gösteriliyor',
       (await s.locator('#guncelleme').textContent()).includes('Son güncelleme'));
+    k('Haberler bölümü #haberler çıpasına sahip',
+      (await s.locator('section#haberler').count()) === 1);
+
+    // Eski /haberler.html bağlantısı bloga yönlenmeli
+    await s.goto(B + 'haberler.html', { waitUntil: 'networkidle' });
+    await s.waitForTimeout(500);
+    k('Eski haberler bağlantısı bloga yönlendi', s.url().includes('blog.html'));
 
     const m = await tarayici.newPage({ viewport: { width: 430, height: 932 } });
     await m.goto(B + 'galeri.html', { waitUntil: 'networkidle' });
