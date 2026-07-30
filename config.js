@@ -57,7 +57,7 @@ window.SITE = {
    */
   ekip: [
     {
-      ad: 'Emel',
+      ad: 'Emel Kula',
       unvan: 'Pilates, EMS ve Yoga Eğitmeni',
       foto: 'medya/emel.jpeg',
       // Yatay fotoğraf, kişi solda — dikey çerçevede sol taraf korunur.
@@ -147,6 +147,10 @@ window.SITE = {
     {
       ad: 'Fonksiyonel Antrenman',
       metin: 'Günlük hayattaki hareketleri güçlendiren, tüm vücudu çalıştıran dinamik seanslar.',
+    },
+    {
+      ad: 'Yoga',
+      metin: 'Nefes, esneklik ve zihinsel dinginlik odaklı akışlar; her seviyeye uygun dersler.',
     },
   ],
 
