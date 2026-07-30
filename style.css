@@ -121,6 +121,37 @@ section .sub { color: var(--ink-3); margin: 0 0 48px; max-width: 52ch; }
 .grid .card h3 { font-size: 20px; margin: 0; }
 .grid .card p { margin: 0; color: var(--ink-3); font-size: 15px; max-width: 56ch; }
 
+/* Eğitmen tanıtımları */
+#ekip { margin-top: 64px; }
+.kisi {
+  display: grid; grid-template-columns: 300px 1fr; gap: 40px;
+  padding: 48px 0; border-top: 1px solid var(--rule);
+}
+.kisi:last-child { border-bottom: 1px solid var(--rule); }
+.kisi-foto img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top;
+  background: var(--paper-alt);
+}
+/* Fotoğraf yüklenemezse metin tüm genişliği kullansın (sınıfı app.js ekler). */
+.kisi.kisi-tek { grid-template-columns: 1fr; }
+.kisi-metin h3 {
+  font-size: 26px; margin: 0 0 4px;
+  font-family: ui-serif, Georgia, serif; color: var(--ink);
+}
+.kisi-unvan {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-4); margin: 0 0 24px;
+}
+.kisi-metin p { margin: 0 0 18px; font-size: 15px; color: var(--ink-3); max-width: 60ch; }
+.kisi-deneyim {
+  list-style: none; margin: 24px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.kisi-deneyim li {
+  font-size: 12px; letter-spacing: 0.04em; color: var(--ink-2);
+  border: 1px solid var(--rule); padding: 6px 12px;
+}
+
 /* Blog listesi — kutusuz satırlar */
 a.post {
   display: grid; grid-template-columns: 130px 1fr; gap: 4px 24px;
@@ -265,6 +296,11 @@ footer.site a:hover { color: var(--ink); }
   a.post .date { grid-row: auto; padding-top: 0; }
   a.post h3 { font-size: 20px; }
   .grid .card { grid-template-columns: 34px 1fr; gap: 4px 14px; padding: 22px 0; }
+  #ekip { margin-top: 40px; }
+  .kisi { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+  .kisi-foto { max-width: 260px; }
+  .kisi-foto img { aspect-ratio: 1 / 1; }
+  .kisi-metin h3 { font-size: 22px; }
   article.post-body { padding: 48px 0 32px; }
   article.post-body h1 { font-size: 30px; }
   article.post-body p, article.post-body li { font-size: 16px; }

@@ -51,6 +51,71 @@ window.SITE = {
     { gun: 'Pazar', saat: 'Kapalı' },
   ],
 
+  /**
+   * EĞİTMENLER — "Hakkımızda" bölümünde görünür.
+   * `foto` dosyası yoksa görsel alanı sessizce gizlenir, metin yine görünür.
+   */
+  ekip: [
+    {
+      ad: 'Emel',
+      unvan: 'Pilates, EMS ve Yoga Eğitmeni',
+      foto: 'medya/emel.jpeg',
+      metin: [
+        '02.01.1989 tarihinde Antalya’da doğdum. Antalya’da büyüdüm ve eğitim ' +
+        'hayatımı Atatürk Anadolu Lisesi’nde tamamladıktan sonra Akdeniz ' +
+        'Üniversitesi Beden Eğitimi ve Spor Yüksekokulu Yöneticilik Bölümü’nden ' +
+        'mezun oldum.',
+        'Spor hayatım çocuk yaşlarda başladı. 4 yıl atletizm, 5 yıl hentbol ve ' +
+        '3 yıl masa tenisi ile aktif olarak ilgilendim. Üniversite yıllarımda ise ' +
+        'tırmanış, badminton ve tenis branşlarında kendimi geliştirmeye devam ettim. ' +
+        'Eğitim hayatım boyunca farklı branşlarda aldığım eğitimlerle bilgi ve ' +
+        'deneyimimi sürekli zenginleştirdim.',
+      ],
+      deneyim: [
+        '12 yıldır Reformer ve Mat Pilates',
+        '11 yıldır EMS',
+        '10 yıldır Hamile Pilatesi',
+        '5 yıldır Yoga',
+        'Skolyoz ve postür analizi eğitimi',
+      ],
+      kapanis:
+        'Benim için hareket etmek sadece fiziksel olarak güçlenmek değil; bedenin ' +
+        'ihtiyaçlarını doğru anlamak, sağlıklı bir duruş kazanmak ve yaşam kalitesini ' +
+        'artırmaktır. Her danışanımın hedefi ve ihtiyaçları farklıdır; bu nedenle ' +
+        'derslerimi tamamen kişiye özel planlıyor, güvenli, bilinçli ve keyifli bir ' +
+        'egzersiz deneyimi sunmaya özen gösteriyorum.',
+    },
+    {
+      ad: 'Feyza Öner',
+      unvan: 'Kurucu · Fitness Lideri, Pilates ve Fonksiyonel Antrenman Eğitmeni',
+      foto: 'medya/feyza.jpeg',
+      metin: [
+        '26 Kasım 1989 tarihinde Erzincan’da doğdum, çocukluğumdan bu yana ' +
+        'Antalya’da yaşıyorum. Antalya Lisesi’nden mezun olduktan sonra Akdeniz ' +
+        'Üniversitesi Beden Eğitimi ve Spor Yüksekokulu Antrenörlük Bölümü’nü ' +
+        'tamamladım.',
+        'Asıl uzmanlık alanım Fitness Liderliği. Eğitimim kapsamında pilates, yoga, ' +
+        'step aerobik ve kişiye özel egzersiz programları hazırlama alanlarında ' +
+        'eğitim aldım; yardımcı branşım tenis.',
+        'Ortaokul ve lise yıllarım boyunca 7 yıl lisanslı voleybol oynadım. Sporun ' +
+        'bana kazandırdığı disiplin, azim ve takım ruhu bugün de mesleğimin temelini ' +
+        'oluşturuyor.',
+      ],
+      deneyim: [
+        '14 yılı aşkın eğitmenlik',
+        'Hamile Pilatesi',
+        'Reformer Pilates',
+        'Mat Pilates',
+        'Fonksiyonel Antrenman',
+      ],
+      kapanis:
+        'Her danışanımın ihtiyaçlarına, hedeflerine ve yaşam tarzına uygun programlar ' +
+        'hazırlıyorum. Benim için pilates sadece egzersiz değil; daha güçlü, daha ' +
+        'sağlıklı ve daha kaliteli bir yaşamın anahtarı. Derslerimde doğru teknik, ' +
+        'güvenli hareket ve sürdürülebilir gelişimi ön planda tutuyorum.',
+    },
+  ],
+
   dersler: [
     {
       ad: 'Reformer Pilates',

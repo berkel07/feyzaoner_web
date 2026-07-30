@@ -51,6 +51,7 @@
       belirleyip programınızı çıkaralım.
     </p>
   </div>
+  <div class="wrap" id="ekip"></div>
 </section>
 
 <section id="blog">
@@ -106,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var bos = document.getElementById('heroGorsel');
     if (bos) bos.remove();
   }
+
+  window.ekipYaz(document.getElementById('ekip'));
 
   document.getElementById('dersListesi').innerHTML = (S.dersler || [])
     .map(function (d) {

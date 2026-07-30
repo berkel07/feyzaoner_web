@@ -281,6 +281,49 @@
     );
   };
 
+  /* ---------- Eğitmenler ---------- */
+  /**
+   * Eğitmen tanıtımlarını çizer.
+   * Fotoğraf dosyası bulunamazsa yalnızca o görsel alanı kaldırılır,
+   * metin olduğu gibi kalır.
+   */
+  window.ekipYaz = function (el) {
+    var liste = S.ekip || [];
+    if (!el || !liste.length) return;
+
+    el.innerHTML = liste
+      .map(function (k, i) {
+        var paragraflar = (k.metin || []).concat(k.kapanis ? [k.kapanis] : []);
+        return (
+          '<article class="kisi" data-kisi="' + i + '">' +
+          (k.foto
+            ? '<div class="kisi-foto"><img src="' + k.foto + '" alt="' + (k.ad || '') + '"></div>'
+            : '') +
+          '<div class="kisi-metin">' +
+          (k.ad ? '<h3>' + k.ad + '</h3>' : '') +
+          (k.unvan ? '<p class="kisi-unvan">' + k.unvan + '</p>' : '') +
+          paragraflar.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+          ((k.deneyim || []).length
+            ? '<ul class="kisi-deneyim">' +
+              k.deneyim.map(function (d) { return '<li>' + d + '</li>'; }).join('') +
+              '</ul>'
+            : '') +
+          '</div></article>'
+        );
+      })
+      .join('');
+
+    // Eksik fotoğrafta tek sütuna düş.
+    el.querySelectorAll('.kisi-foto img').forEach(function (img) {
+      img.addEventListener('error', function () {
+        var kutu = img.closest('.kisi-foto');
+        var kisi = img.closest('.kisi');
+        if (kutu) kutu.remove();
+        if (kisi) kisi.classList.add('kisi-tek');
+      });
+    });
+  };
+
   /* ---------- Haberler ---------- */
   /**
    * haberler.json'u okuyup verilen kaba çizer.

@@ -113,6 +113,10 @@ async function main() {
       (await s.locator('.brand-yazi').evaluate((e) => e.naturalWidth)) > 0);
     k('Menü 5 bağlantı', (await s.locator('.nav-links a').count()) === 5);
     k('Ders listesi dolu', (await s.locator('#dersListesi .card').count()) >= 5);
+    // Eğitmen tanıtımları — fotoğraf henüz yoksa metin yine görünmeli.
+    k('Eğitmen tanıtımları listelendi', (await s.locator('#ekip .kisi').count()) === 2);
+    k('Eğitmen metinleri dolu', (await s.locator('#ekip .kisi-metin p').count()) >= 8);
+    k('Eğitmen deneyim etiketleri var', (await s.locator('#ekip .kisi-deneyim li').count()) >= 8);
     k('Çalışma saatleri', (await s.locator('#saatler li').count()) === 3);
     k('WhatsApp numarası doğru',
       (await s.locator('.wa-float').getAttribute('href')).includes('wa.me/' + wa));
