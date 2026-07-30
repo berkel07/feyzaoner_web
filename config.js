@@ -60,8 +60,7 @@ window.SITE = {
       ad: 'Emel Kula',
       unvan: 'Pilates, EMS ve Yoga Eğitmeni',
       foto: 'medya/emel.jpeg',
-      // Yatay fotoğraf, kişi solda — dikey çerçevede sol taraf korunur.
-      odak: 'left center',
+      odak: 'center top',
       metin: [
         '02.01.1989 tarihinde Antalya’da doğdum. Antalya’da büyüdüm ve eğitim ' +
         'hayatımı Atatürk Anadolu Lisesi’nde tamamladıktan sonra Akdeniz ' +
@@ -91,7 +90,8 @@ window.SITE = {
       ad: 'Feyza Öner',
       unvan: 'Kurucu · Fitness Lideri, Pilates ve Fonksiyonel Antrenman Eğitmeni',
       foto: 'medya/feyza.jpeg',
-      odak: 'center top',
+      // Yatay fotoğraf, kişi solda — dikey çerçevede sol taraf korunur.
+      odak: 'left center',
       metin: [
         '26 Kasım 1989 tarihinde Erzincan’da doğdum, çocukluğumdan bu yana ' +
         'Antalya’da yaşıyorum. Antalya Lisesi’nden mezun olduktan sonra Akdeniz ' +
