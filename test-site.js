@@ -117,6 +117,11 @@ async function main() {
     k('Eğitmen tanıtımları listelendi', (await s.locator('#ekip .kisi').count()) === 2);
     k('Eğitmen metinleri dolu', (await s.locator('#ekip .kisi-metin p').count()) >= 8);
     k('Eğitmen deneyim etiketleri var', (await s.locator('#ekip .kisi-deneyim li').count()) >= 8);
+    k('Eğitmen fotoğrafları yüklendi',
+      await s.evaluate(() => {
+        const g = Array.from(document.querySelectorAll('#ekip .kisi-foto img'));
+        return g.length === 2 && g.every((i) => i.naturalWidth > 0);
+      }));
     k('Çalışma saatleri', (await s.locator('#saatler li').count()) === 3);
     k('WhatsApp numarası doğru',
       (await s.locator('.wa-float').getAttribute('href')).includes('wa.me/' + wa));

@@ -297,7 +297,8 @@
         return (
           '<article class="kisi" data-kisi="' + i + '">' +
           (k.foto
-            ? '<div class="kisi-foto"><img src="' + k.foto + '" alt="' + (k.ad || '') + '"></div>'
+            ? '<div class="kisi-foto"><img src="' + k.foto + '" alt="' + (k.ad || '') + '"' +
+              (k.odak ? ' style="object-position:' + k.odak + '"' : '') + '></div>'
             : '') +
           '<div class="kisi-metin">' +
           (k.ad ? '<h3>' + k.ad + '</h3>' : '') +
